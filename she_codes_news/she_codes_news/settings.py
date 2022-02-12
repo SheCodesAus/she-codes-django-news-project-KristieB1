@@ -26,7 +26,9 @@ SECRET_KEY = '(jkv!qs0&8mc=ftuod-kzmdni25#vl+s!i@f!yk0*@tuvm16x+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# change to false for prod- to turn on the rendered 404 errors
+
+ALLOWED_HOSTS = [ 'localhost', '127.0.0.1:8000', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    # 'news'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'she_codes_news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates', 'errors'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,4 +134,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'news:index'
+
+# replace with custom redirect url
+
 LOGOUT_REDIRECT_URL = 'news:index'

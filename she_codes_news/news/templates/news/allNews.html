@@ -20,20 +20,7 @@
     <a href="{% url 'login' %}">Please Login to create News Story</a>
     {% endif %}
    
-   <h2>Latest News</h2>
-
-    <div id="latest-stories">
-        {% if latest_stories %}
-            {% for story in latest_stories %}
-                {% include "./storyCard.html" with story=story position=forloop.counter %}
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
-
    <h2>All News</h2>
-
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}
