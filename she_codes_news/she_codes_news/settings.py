@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    # 'news'
+   
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -138,3 +138,6 @@ LOGIN_REDIRECT_URL = 'news:index'
 # replace with custom redirect url
 
 LOGOUT_REDIRECT_URL = 'news:index'
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

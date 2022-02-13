@@ -5,10 +5,10 @@ app_name = 'news'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('', views.AllView.as_view(), name='allNews'),
+    path('all-news', views.AllView.as_view(), name='allNews'),
     path('<int:pk>/', views.StoryView.as_view(), name='story'),
     path('add-story/', views.AddStoryView.as_view(),name='newStory'),
-    path('<int:pk>/update', views.EditStoryView.as_view(),name='editStory')
+    path('<int:pk>/update', views.EditStoryView.as_view(),name='editStory'),
     # interger, primary key
 ]
 

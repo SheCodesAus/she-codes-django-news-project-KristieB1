@@ -4,17 +4,17 @@
 
 {% block content %}
 
-<h2>Create New User</h2>
+    <h2>Create New User</h2>
 
-{% if form.errors %}
+    {% if form.errors %}
     <p>error</p>
-{% endif %}
+    {% endif %}
 
-<form method="post">
+    <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Register</button>
     <br><br>
-</form>
+    </form>
 
 {% endblock %}
