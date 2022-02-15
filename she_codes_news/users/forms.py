@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 from .models import *
+from .models import Profile
 
 # Sign Up Form
 class CustomSignUpForm(UserCreationForm):
@@ -31,3 +32,21 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ['username', 'email']
 
+
+class ProfileForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=255)
+    last_name = forms.CharField(max_length=255)
+    email = forms.EmailField()
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+        exclude = ['user']
+
+
+def form_validation_error(form):
+    msg = ""
+    for field in form:
+        for error in field.errors:
+            msg += "%s: %s \\n" % (field.label if hasattr(field, 'label') else 'Error', error)
+    return msg

@@ -21,6 +21,7 @@ class NewsStory(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='general')
     content = models.TextField()
 
+
     def __str__ (self):
         return self.title
 

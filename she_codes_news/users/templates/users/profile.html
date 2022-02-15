@@ -9,12 +9,28 @@
 
     <h2>{{user.username}} profile </h2>
 
-    <form method = "post" enctype="multipart/form-data">
+
+    <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <!-- <button type="submit">Upload</button> -->
-       
+        <input type="submit" value="submit">
     </form>
+
+    <div>
+        <!-- <h3>{{user.email}} </h3> -->
+        <p>
+            {{bio}}
+        </p>
+    </div>
+
+
+    <!-- <div>
+        <ul>
+        {% for story in user.newsstory_set.all %}
+            <li><a href="{% url 'news:story' story.id %}">{{story.title}}</a></li>
+        {% endfor %}
+        </ul>
+    </div> -->
 
     {% if form.errors %}
     <p>error</p>
@@ -27,3 +43,4 @@
      
 
 {% endblock %}
+
