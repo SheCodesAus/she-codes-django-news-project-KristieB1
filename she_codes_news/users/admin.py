@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Profile
 from news.models import NewsStory
 from news.models import Categories
 
@@ -24,3 +24,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 admin.site.register(Categories, CategoryAdmin)
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['bio','user']
+admin.site.register(Profile, ProfileAdmin)

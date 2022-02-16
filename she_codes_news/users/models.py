@@ -17,7 +17,7 @@ class Profile(models.Model):
     avatar_url = models.URLField(default='https://picsum.photos/600')
 
     def __str__(self):
-        return f'{self.username}\'s Profile '
+        return f'{self.user.username}\'s Profile '
 
 
 
