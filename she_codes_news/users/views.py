@@ -63,10 +63,21 @@ class RegisterView(generic.CreateView):
 #     return HttpResponse('successfully uploaded')
 
 # @method_decorator(login_required(login_url='login'), name='dispatch')
-class ProfileView(generic.UpdateView):
+
+class ProfileEdit(generic.UpdateView):
+    form_class = ProfileForm
+    template_name = 'users/profileEdit.html'
+    success_url = reverse_lazy('users:profile')
+    
+
+    def  get_object(self, queryset=None):
+        profile, created =Profile.objects.get_or_create(user=self.request.user)
+        return profile
+
+class ProfileView(generic.DetailView):
     form_class = ProfileForm
     template_name = 'users/profile.html'
-    success_url = reverse_lazy('news:index')
+    context_object_name = 'profile'
     
 
     def  get_object(self, queryset=None):

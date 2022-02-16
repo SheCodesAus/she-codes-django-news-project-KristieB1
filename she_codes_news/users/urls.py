@@ -6,6 +6,7 @@ app_name = 'users'
 urlpatterns = [
     path('signup', views.RegisterView.as_view(), name='signup'),
     path('profile', views.ProfileView.as_view(), name='profile'),
+    path('profileEdit', views.ProfileEdit.as_view(), name='profileEdit'),
     # interger, primary key
 ]
 

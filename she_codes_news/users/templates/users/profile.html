@@ -5,42 +5,45 @@
 
 {% block content %}
 
-    {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 
-    <h2>{{user.username}} profile </h2>
+    <h2>{{user.username}}'s profile </h2>
 
 
-    <form action="" method="post">
+    <!-- <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="submit">
+        <input type="submit" value="submit"> -->
     </form>
 
     <div>
         <!-- <h3>{{user.email}} </h3> -->
-        <p>
-            {{bio}}
-        </p>
+        <h4>About me</h4>
+        <p>{{ user.first_name }} {{ user.last_name }}</p>
+        <p>{{ user.email }}</p>
+        <p> {{ profile.bio }}</p>
+        <img src="{{ profile.avatar_url}}">
+
     </div>
 
+    <div><a href="{% url 'users:profileEdit' %}">Edit</a></div>
 
-    <!-- <div>
+
+    <div>
+        <p>My Stories</p>
         <ul>
         {% for story in user.newsstory_set.all %}
             <li><a href="{% url 'news:story' story.id %}">{{story.title}}</a></li>
         {% endfor %}
         </ul>
-    </div> -->
+    </div>
 
-    {% if form.errors %}
-    <p>error</p>
-    {% endif %}
+    
 
-    {% else %}
+    
 
-    <a href="{% url 'login' %}">Please Login</a>
-    {% endif %}
-     
-
+{% else %}
+<a href="{% url 'login' %}">Please Login</a>
+{% endif %}
 {% endblock %}
 
