@@ -8,9 +8,9 @@
 {% block content %}
 
 <div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
-    <h4>{{ story.category }}</h4>
+    <h2>Title: {{ story.title }}</h2>
+    <h4>Author: {{ story.author }}</h4>
+    <h4>Category: {{ story.category }}</h4>
     <div id="story-content">
         <img src="{{ story.image_url }}">
         {{ story.content|linebreaks }}

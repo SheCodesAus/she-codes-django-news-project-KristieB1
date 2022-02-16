@@ -66,6 +66,8 @@ class RegisterView(generic.CreateView):
 class ProfileView(generic.UpdateView):
     form_class = ProfileForm
     template_name = 'users/profile.html'
+    success_url = reverse_lazy('news:index')
+    
 
     def  get_object(self, queryset=None):
         profile, created =Profile.objects.get_or_create(user=self.request.user)

@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG') != 'False'
+DEBUG = os.environ.get('DJANGO_DEBUG') != 'True'
 
 # change to false for prod- to turn on the rendered 404 errors
 

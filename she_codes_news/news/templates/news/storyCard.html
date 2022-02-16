@@ -6,10 +6,10 @@
             <img src="{{ story.image_url }}">
         {% endif %}
         <div class="story-card-text">
-            <h3>{{ story.title }}</h3>
-            <h4>{{ story.author }}</h4>
-            <h4>{{ story.pub_date }}</h4>
-            <h4>{{ story.category }}</h4>
+            <h3>Title: {{ story.title }}</h3>
+            <h4>Author: {{ story.author }}</h4>
+            <h4>Publish date: {{ story.pub_date }}</h4>
+            <h4>Category: {{ story.category }}</h4>
             <a href="{% url 'news:story' story.id %}update">Edit</a>
         </div>
     </a>
