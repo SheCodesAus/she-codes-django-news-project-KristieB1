@@ -20,6 +20,21 @@
     <a href="{% url 'login' %}">Please Login to create News Story</a>
     {% endif %}
    
+    <div>
+        <p>By category</p>
+        <ul>
+        {% for category in category_filter %}
+            <li><a href="{% url 'news:search' %}?category={{ category.name }}">{{category.name}}</a></li>
+        {% endfor %}
+        </ul>
+        <p>By Author</p>
+        <ul>
+        {% for author in author_filter %}
+            <li><a href="{% url 'news:search' %}?author={{ author.username }}">{{author.username}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
    <h2>Latest News</h2>
 
     <div id="latest-stories">
@@ -32,6 +47,8 @@
         {% endif %}
     </div>
 
+
+ 
    <!-- <h2>All News</h2> -->
 
     <!-- <div id="all-stories">

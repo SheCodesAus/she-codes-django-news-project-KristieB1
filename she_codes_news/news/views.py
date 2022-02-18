@@ -3,7 +3,7 @@ from unicodedata import category
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from .models import NewsStory
+from .models import Category, NewsStory
 from .forms import StoryForm
 from django.http import HttpResponse
 from django.views.generic.edit import UpdateView
@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
+from users.models import CustomUser
 
 
 
@@ -24,20 +25,29 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_stories'] = NewsStory.objects.all()[:4]
+        context['category_filter'] = Category.objects.all()
+        context['author_filter'] = CustomUser.objects.all()
         # context['all_stories'] = NewsStory.objects.all()
         return context
 
 class AllView(generic.ListView):
     template_name = 'news/allNews.html'
+    context_object_name = 'all_stories'
 
     def get_queryset(self):
         '''Return all news stories.'''
-        return NewsStory.objects.all()
+        newest = self.request.GET.get('sort')
+        dateQuery = NewsStory.objects.all()
+        if newest=='fish':
+            dateQuery = dateQuery.order_by('-pub_date')
+        else:
+            dateQuery = dateQuery.order_by('pub_date')
+        return dateQuery
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['latest_stories'] = NewsStory.objects.all()[:4]
-        context['all_stories'] = NewsStory.objects.all()
+        # context['all_stories'] = NewsStory.objects.all()
         return context
 
 class StoryView(generic.DetailView):
@@ -137,11 +147,15 @@ class StorySearchView(generic.ListView):
     # model = NewsStory
 
     def get_queryset(self):
-        category = self.kwargs.get('category', 'General')
+        # category = self.kwargs.get('category', '')
+        category = self.request.GET.get('category')
+        author = self.request.GET.get('author')
         # object_list = self.model.objects.all()
         object_list = NewsStory.objects.all()
         if category:
             object_list = object_list.filter(category__name__icontains=category)
+        if author:
+            object_list = object_list.filter(author__username__icontains=author)
         return object_list
 
     def get_context_data(self, **kwargs):

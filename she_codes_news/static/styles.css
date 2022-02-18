@@ -8,7 +8,7 @@ body {
     background-color: white;
     /* background-image: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
   
-    font-family: 'Lato', sans-serif;
+    
 }
 
 header {
@@ -36,9 +36,11 @@ h1 {
 h2 {
    color: black;
    font-size: 1.5rem;
+   font-family: 'Lato', sans-serif;
 }
 
 h3 {
+    font-family: 'Lato', sans-serif;
     font-size: 2rem;
     margin: 0;
 }
@@ -62,7 +64,7 @@ a {
 }
 
 a, p {
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato'; */
     font-weight: 400;
 }
 

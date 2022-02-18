@@ -21,8 +21,25 @@
     {% endif %}
    
    <h2>All News</h2>
+
+   <div>
+    <h4>Sort by:</h4>
+ 
+    <ul>
+    
+        <li><a href="{% url 'news:allNews' %}?sort=fish">Newest</a></li>
+    
+    </ul>
+    
+    <ul>
+    
+        <li><a href="{% url 'news:allNews' %}?sort=dog">Oldest</a></li>
+
+    </ul>
+    </div>
+
     <div id="all-stories">
-        {% if latest_stories %}
+        {% if all_stories %}
             {% for story in all_stories %}
                 {% include "./storyCard.html" with story=story %}
             {% endfor %}
