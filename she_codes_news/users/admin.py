@@ -3,8 +3,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser, Profile
-from news.models import NewsStory
-from news.models import Categories
+
+
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -14,16 +14,16 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ['title',  'content', 'category']
+# class NewsAdmin(admin.ModelAdmin):
+#     list_display = ['title',  'content', 'category']
 
-admin.site.register(NewsStory, NewsAdmin)
+# admin.site.register(NewsStory, NewsAdmin)
 
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ['name']
 
-admin.site.register(Categories, CategoryAdmin)
+# admin.site.register(Categories, CategoryAdmin)
 
 
 class ProfileAdmin(admin.ModelAdmin):

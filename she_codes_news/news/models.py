@@ -1,13 +1,18 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-CATEGORY_CHOICES = (
-    ('general', 'GENERAL'),
-    ('cats', 'CATS'),
-    ('misc','MISC'),
-    ('dogs','DOGS'),
-    ('coding','CODING'),
-)
+# CATEGORY_CHOICES = (
+#     ('general', 'GENERAL'),
+#     ('cats', 'CATS'),
+#     ('misc','MISC'),
+#     ('dogs','DOGS'),
+#     ('coding','CODING'),
+# )
+
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
 
 class NewsStory(models.Model):
     title = models.CharField(max_length=200)
@@ -18,14 +23,13 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     image_url = models.URLField(default='https://picsum.photos/600')
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='general')
+    # category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='general')
+    category = models.ForeignKey(Category, null=True, blank=True,
+    on_delete=models.SET_NULL, 
+    related_name= "stories")
     content = models.TextField()
 
 
     def __str__ (self):
         return self.title
 
-class Categories(models.Model):
-    name = models.CharField(max_length=10)
-    def __str__(self):
-        return self.name

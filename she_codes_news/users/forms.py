@@ -30,15 +30,14 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']
+        fields = ['first_name', 'last_name', 'email']
 
 
 class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=255)
 
     def __init__(self,  *args, **kwargs):
         super(ProfileForm, self ).__init__(*args, **kwargs)
-        self.fields['first_name'].initial = 'fish' 
+        
     # last_name = forms.CharField(max_length=255)
     # email = forms.EmailField()
 

@@ -1,3 +1,5 @@
+from turtle import title
+from unicodedata import category
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -34,7 +36,7 @@ class AllView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.all()[:4]
+        # context['latest_stories'] = NewsStory.objects.all()[:4]
         context['all_stories'] = NewsStory.objects.all()
         return context
 
@@ -127,7 +129,51 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
             'initial': self.module.settings
         }
 
-    
+
+
+class StorySearchView(generic.ListView):
+    template_name = 'news/search.html'
+    context_object_name = 'NewsStory'
+    # model = NewsStory
+
+    def get_queryset(self):
+        category = self.kwargs.get('category', 'General')
+        # object_list = self.model.objects.all()
+        object_list = NewsStory.objects.all()
+        if category:
+            object_list = object_list.filter(category__name__icontains=category)
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['latest_stories'] = NewsStory.objects.all()[:4]
+        # context['object_list'] = NewsStory.objects.all()
+        return context
+
+
+  
+
+    # def get_queryset(self):
+    #     '''Return all news stories.'''
+    #     return NewsStory.objects.all()
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['latest_stories'] = NewsStory.objects.filter(title__icontains=)
+    #     # context['all_stories'] = NewsStory.objects.all()
+    #     return context
+
+    #    def get_context_data(self, **kwargs):
+    #     context = super('object_list', self).get_context_data(**kwargs)
+    #     if not self.profiles:
+    #         self.profiles = Profile.objects.all()
+    #     context.update({
+    #         'profiles': self.profiles
+    #     })
+    #     return context
+
+        # NewsStory.objects.filter(category__name__in=["General","Cats"])
+
 
     # def form_valid(self,form):
     #     response = super().form_valid(form)

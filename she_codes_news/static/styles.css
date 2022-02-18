@@ -1,36 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,800;1,800&family=Source+Sans+3:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Lato:wght@100;900&family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@600&family=Playfair+Display:ital,wght@0,400;0,800;1,800&family=Source+Sans+3:wght@200&display=swap');
+
 
 
 body {
-    background-color: rgb(240, 239, 239);
-    font-family: 'Libre Baskerville', serif;
-    background-color: #dfe3ee;
+    background-color: white;
+    /* background-image: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
+  
+    font-family: 'Lato', sans-serif;
 }
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid whitesmoke;
+    background-color: white ;
 }
 
 img {
-    /* filter: grayscale(100%); */
     filter: drop-shadow(1);
 }
 
 h1 {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    text-decoration:solid;
+    font-family: 'Abril Fatface', cursive;
+    font-weight: 400;
+    text-shadow: 1,1;
+    text-decoration: none;
     font-size: 4rem;
     margin: 0;
-    color: #660066;
+    color: #4c394f;
 }
 
 h2 {
    color: black;
+   font-size: 1.5rem;
 }
 
 h3 {
@@ -57,7 +62,8 @@ a {
 }
 
 a, p {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
 }
 
 /* #sucess-msg {
@@ -68,9 +74,10 @@ a, p {
 .story-card{
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(207, 237, 243, 0.75);
+    background-color: #bcb8ce;
     border-radius: 12px;
-    border: 2px solid rgba(170, 188, 214, 0.3);
+    border: 2px solid rgba(182, 170, 214, 0.3);
+    border-radius: 2px;
 }
    
 

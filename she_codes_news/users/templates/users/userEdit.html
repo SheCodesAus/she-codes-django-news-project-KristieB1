@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Your Details {% endblock title %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+    <h2>Edit your details {{user.username}}</h2>
+
+    {% if form.errors %}
+    <p>error</p>
+    {% endif %}
+
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+    <br><br>
+    </form>
+
+{% else %}
+<a href="{% url 'login' %}">Please Login</a>
+{% endif %}
+
+{% endblock %}
