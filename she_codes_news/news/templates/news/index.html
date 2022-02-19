@@ -15,7 +15,7 @@
     {% endif %}
     </div>
 
-    <div>
+
     {% if request.user.is_authenticated %}
     <a href="{% url 'news:newStory' %}"><button> Write a News Story</button></a>
     {% else %}
@@ -24,7 +24,7 @@
     </a>
    
     {% endif %}
-    </div>
+
    
 
     <!-- <div class="Homepage">

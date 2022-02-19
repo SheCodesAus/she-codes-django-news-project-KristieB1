@@ -133,7 +133,14 @@
 #all-stories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px 10px;
 }
 
 #all-stories .story-card {
@@ -155,3 +162,7 @@
     background-color: green;
 
 }
+
+
+
+

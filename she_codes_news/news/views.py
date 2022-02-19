@@ -31,25 +31,7 @@ class IndexView(generic.ListView):
         # context['all_stories'] = NewsStory.objects.all()
         return context
 
-class AllView(generic.ListView):
-    template_name = 'news/allNews.html'
-    context_object_name = 'all_stories'
 
-    def get_queryset(self):
-        '''Return all news stories.'''
-        newest = self.request.GET.get('sort')
-        dateQuery = NewsStory.objects.all()
-        if newest=='fish':
-            dateQuery = dateQuery.order_by('-pub_date')
-        else:
-            dateQuery = dateQuery.order_by('pub_date')
-        return dateQuery
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context['latest_stories'] = NewsStory.objects.all()[:4]
-        # context['all_stories'] = NewsStory.objects.all()
-        return context
 
 class StoryView(generic.DetailView):
     model = NewsStory
@@ -153,24 +135,60 @@ class StorySearchView(generic.ListView):
     context_object_name = 'NewsStory'
     # model = NewsStory
 
+
     def get_queryset(self):
-        # category = self.kwargs.get('category', '')
+        '''Return all news stories.'''
+        newest = self.request.GET.get('sort')
         category = self.request.GET.get('category')
         author = self.request.GET.get('author')
-        # object_list = self.model.objects.all()
+        
         object_list = NewsStory.objects.all()
+        
+
+        
+        # object_list = self.model.objects.all()
         if category:
             object_list = object_list.filter(category__name__icontains=category)
         if author:
             object_list = object_list.filter(author__username__icontains=author)
+
+        if newest=='fish':
+            object_list = object_list.order_by('-pub_date')
+        else:
+            object_list = object_list.order_by('pub_date')
+
         return object_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['latest_stories'] = NewsStory.objects.all()[:4]
         # context['object_list'] = NewsStory.objects.all()
+        context['category_filter'] = Category.objects.all()
+        context['author_filter'] = CustomUser.objects.all()
         return context
 
+
+ 
+
+    # class AllView(generic.ListView):
+    #     template_name = 'news/allNews.html'
+    #     context_object_name = 'all_stories'
+
+    #     def get_queryset(self):
+    #         '''Return all news stories.'''
+    #         newest = self.request.GET.get('sort')
+    #         dateQuery = NewsStory.objects.all()
+    #         if newest=='fish':
+    #             dateQuery = dateQuery.order_by('-pub_date')
+    #         else:
+    #             dateQuery = dateQuery.order_by('pub_date')
+    #         return dateQuery
+
+    #     def get_context_data(self, **kwargs):
+    #         context = super().get_context_data(**kwargs)
+    #         # context['latest_stories'] = NewsStory.objects.all()[:4]
+    #         # context['all_stories'] = NewsStory.objects.all()
+    #         return context
 
   
 

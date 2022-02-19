@@ -10,9 +10,9 @@
     {% for message in messages %}
     <div class="text-center alert alert-{{ message.tags }}" id="sucess-msg">
         {{ message|safe }}
-    </div>
     {% endfor %}
     {% endif %}
+    </div>
 
     {% if request.user.is_authenticated %}
     <a href="{% url 'news:newStory' %}">
@@ -24,22 +24,38 @@
     </a>
     {% endif %}
    
-   <h2>All News</h2>
+   <h2>All News Stories</h2>
 
-   <div>
-    <h4>Sort by:</h4>
- 
-    <ul>
+   <div class="homepageFilters">
+    <h2>Sort by publish date:</h2>
+        <a href="{% url 'news:allNews' %}?sort=fish">
     
-        <li><a href="{% url 'news:allNews' %}?sort=fish">Newest</a></li>
+        <button>Descending</button>
+        </a>
     
-    </ul>
+        <a href="{% url 'news:allNews' %}?sort=dog">
+        <button>Asending </button>
+        </a>
     
-    <ul>
-    
-        <li><a href="{% url 'news:allNews' %}?sort=dog">Oldest</a></li>
 
-    </ul>
+    <div>
+        <h2>Filter All News Stories</h3>
+        <div>   
+        <h3>By Category</h3>
+        {% for category in category_filter %}
+            <a href="{% url 'news:search' %}?category={{ category.name }}">
+            <button>{{category.name}}</button>
+            </a>
+        {% endfor %}
+
+        <h3>By Author</h3>
+        {% for author in author_filter %}
+            <a href="{% url 'news:search' %}?author={{ author.username }}">
+            <button>{{author.username}}</button>
+            </a>
+        
+        {% endfor %}
+        </div> 
     </div>
 
     <div id="all-stories">

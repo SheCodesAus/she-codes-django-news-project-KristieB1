@@ -20,16 +20,49 @@
    
    <h2>Search News</h2>
 
-   <div >
-    {% if NewsStory %}
-        {% for story in NewsStory %}
-            {% include "./storyCard.html" with story=story %}
-        {% endfor %}
-    {% else %}
-        <p>No stories are available.</p>
-    {% endif %}
-</div>
 
+
+    <div class="homepageFilters">
+        <h2>Sort by publish date:</h2>
+        <a href="{% url 'news:search' %}?sort=fish">
+    
+        <button>Descending</button>
+        </a>
+    
+        <a href="{% url 'news:search' %}?sort=dog">
+        <button>Asending </button>
+        </a>
+        
+    
+    <div>
+        <h2>Filter All News Stories</h3>
+        <div>   
+        <h3>By Category</h3>
+        {% for category in category_filter %}
+            <a href="{% url 'news:search' %}?category={{ category.name }}">
+            <button>{{category.name}}</button>
+            </a>
+        {% endfor %}
+
+        <h3>By Author</h3>
+        {% for author in author_filter %}
+            <a href="{% url 'news:search' %}?author={{ author.username }}">
+            <button>{{author.username}}</button>
+            </a>
+        
+        {% endfor %}
+        </div> 
+    </div>
+
+    <div >
+        {% if NewsStory %}
+            {% for story in NewsStory %}
+                {% include "./storyCard.html" with story=story %}
+            {% endfor %}
+        {% else %}
+            <p>No stories are available.</p>
+        {% endif %}
+    </div>
 
 
    <!-- <h2>All News</h2> -->
