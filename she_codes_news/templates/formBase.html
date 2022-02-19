@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="Kristie Brandis">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'formStyles.css' %}">
         {% block stylesheets %}{% endblock %}
 
 
@@ -28,6 +28,26 @@
             <!-- include nav here -->
             {% include './nav.html' %}
         </header>
+
+        <form >
+            <!-- <div class="form-item">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div> 
+            <div class="form-item">
+                <label for="mail">Email</label>
+                <input type="email" id="mail" name="email">
+            </div>
+            </div>
+            <div class="form-item">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div class="form-item" id="myDIV">
+                <div id="space"></div>
+                <button class="button" type="submit">Send</button>
+            </div> -->
+        </form>
 
         <!-- content blocks here -->
         {% block content %}{% endblock %}

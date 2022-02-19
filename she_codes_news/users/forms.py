@@ -1,4 +1,5 @@
 from pyexpat import model
+from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
@@ -27,11 +28,20 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ['first_name', 'last_name', 'username', 'email']
 
-class CustomUserChangeForm(UserChangeForm):
+
+
+class CustomUserChangeForm(ModelForm):
+
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'email']
-        exclude = ['password']
+        fields = ('first_name', 'last_name', 'email')
+
+
+# class CustomUserChangeForm(UserChangeForm):
+#     class Meta:
+#         model = CustomUser
+#         fields = ['first_name', 'last_name', 'email']
+#         # exclude = ['password']
 
 
 class ProfileForm(forms.ModelForm):
