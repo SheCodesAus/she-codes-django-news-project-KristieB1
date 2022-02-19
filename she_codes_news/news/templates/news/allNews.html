@@ -15,9 +15,13 @@
     {% endif %}
 
     {% if request.user.is_authenticated %}
-    <a href="{% url 'news:newStory' %}">Write New Story</a>
+    <a href="{% url 'news:newStory' %}">
+    <button> Write a News Story</button>
+    </a>
     {% else %}
-    <a href="{% url 'login' %}">Please Login to create News Story</a>
+    <a href="{% url 'login' %}">
+        <button> Please Login to create a Story</button>
+    </a>
     {% endif %}
    
    <h2>All News</h2>

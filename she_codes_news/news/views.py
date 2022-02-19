@@ -17,14 +17,15 @@ from users.models import CustomUser
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
+    context_object_name = 'latest_stories'
 
     def get_queryset(self):
         '''Return all news stories.'''
-        return NewsStory.objects.all()
+        return NewsStory.objects.all().order_by('-pub_date')[:4]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.all()[:4]
+        # context['latest_stories'] = NewsStory.objects.all().order_by('pub_date')[:4]
         context['category_filter'] = Category.objects.all()
         context['author_filter'] = CustomUser.objects.all()
         # context['all_stories'] = NewsStory.objects.all()
@@ -133,6 +134,12 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
     def get_module(self):
         object = self.object if getattr(self, 'object', None) is not None else self.get_object()
         return object.load_module()
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['isAuthor'] = self.request.user == self.object.author
+        return context
+       
 
     def get_settings_form_kwargs(self):
         kwargs = {

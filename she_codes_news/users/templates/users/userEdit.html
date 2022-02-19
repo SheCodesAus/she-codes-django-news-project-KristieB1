@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "formBase.html" %}
 
 {% block title %}Edit Your Details {% endblock title %}
 
@@ -6,21 +6,33 @@
 
 {% if request.user.is_authenticated %}
 
+<div class="SignUpDiv">
+    <div>
     <h2>Edit your details {{user.username}}</h2>
+</div>
 
     {% if form.errors %}
     <p>error</p>
     {% endif %}
 
-    <form method="post">
+    <form id="SignUpDiv" method="post">
+    <div class="form-item">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Update</button>
-    <br><br>
+    <button class="button" type="submit">Update</button>
+    </div>
+
     </form>
 
+</div>
+
 {% else %}
-<a href="{% url 'login' %}">Please Login</a>
+<a href="{% url 'login' %}">
+    <button> Please Login to update your details</button>
+</a> 
+
 {% endif %}
+
+
 
 {% endblock %}

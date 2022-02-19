@@ -18,13 +18,18 @@
 </form>
 {% else %}
 
-<a href="{% url 'login' %}">Please Login</a>
+<a href="{% url 'login' %}">
+    <button> Please Login to create a Story</button>
+</a>
+
 {% endif %}
+
+</div>
 {% endblock %}
 
 
 
-<div class="story-card-text">
+<!-- <div class="story-card-text">
     <h3>Title: {{ story.title }}</h3>
     {% if position < 5 %}
     <img src="../static/news/images/placeholder-{{ position }}.jpg">
@@ -38,9 +43,9 @@
     <a href="{% url 'news:story' story.id %}update">Edit</a>
     {% else %}
     {% endif %}
-</div>
+</div> -->
 
-</div>
+
 
     <!-- <div class="form-item">
                 <label for="name">Name</label>

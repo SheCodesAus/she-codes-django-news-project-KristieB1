@@ -1,20 +1,26 @@
-{% extends 'base.html' %}
+{% extends "formBase.html" %}
 
-{% block title %}Sign Page{% endblock title %}
+{% block title %}Register to create News Stories{% endblock title %}
 
 {% block content %}
 
+<div class="SignUpDiv">
+<div>
     <h2>Create New User</h2>
-
-    {% if form.errors %}
+</div>
+    <!-- {% if form.errors %}
     <p>error</p>
-    {% endif %}
+    {% endif %} -->
 
-    <form method="post">
+    <form id="SignUpDiv" method="post">
+    <div class="form-item">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Register</button>
-    <br><br>
+    <button class="button" type="submit">Register</button>
+    </div>
+    
     </form>
+
+</div>
 
 {% endblock %}

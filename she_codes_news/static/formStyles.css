@@ -7,7 +7,7 @@
 body {
     /* background-color: lightpink; */
     /* background-image: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
-    border: pink;
+    /* border: purple; */
     font-family:  'Lato', sans-serif;
     font-weight: normal;
 
@@ -19,8 +19,20 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     background-image: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .7;
+}
+
+.SignUpDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+    background-repeat: no-repeat;
+    background-position: center;
     opacity: .7;
 }
 
@@ -50,9 +62,7 @@ header {
 
 }
 
-img {
-    filter: drop-shadow(1);
-}
+
 
 h1 {
     font-family: 'Abril Fatface', cursive;
@@ -100,11 +110,11 @@ p {
     font-size: 1.5rem;
 }
 
-form{
+/* form{
     display: flex;
     border-bottom: 1px solid magenta;
 
-}
+} */
 
 form p label {
     color: black;
@@ -141,6 +151,23 @@ form p input, select, textarea{
     border: 1px solid rgba(170, 188, 214, 0.3);
 }
 
+form {
+    /* display: flex;
+    align-content: flex-start; */
+    margin: 2px;
+    padding:5px;
+    width: 60%;
+    /* backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(236, 236, 248, 0.75); */
+
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    border: 1px solid rgba(170, 188, 214, 0.3);
+
+}
+
 #createStoryForm  input, select, textarea, button {
     display: flex;
     margin: 2px ;
@@ -155,16 +182,52 @@ form p input, select, textarea{
 }
 
 
+
+form {
+    display: flex;
+    align-content: center;
+    margin: 2px;
+    padding:5px;
+    width: 50%;
+    /* backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(236, 236, 248, 0.75); */
+
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    border: 1px solid rgba(170, 188, 214, 0.3);
+}
+
+
+form  input, select, textarea, button {
+    display: flex;
+    margin: 2px ;
+    /* justify-content:baseline; */
+    align-items:flex-start;
+    padding: 2px;
+}
+
+form  p input, select, textarea, button {
+    font-size: 1.5rem;
+    font-family:  'Lato', sans-serif; ;
+}
+
+
+
+
+
+
 button {
     display: block;
-    width: 150px;
+    width: fit-content;
     height: 50px;
     line-height: 46px;
     text-decoration: none;
     text-align: center;
     border-radius: 12px;
-    border: 3px solid #6f20a3;
-    color: #4b1da1;
+    border: 3px solid #340a50;
+    color: #21094e;
     font-size: 1.5rem;
     position: relative;
     overflow: hidden;
