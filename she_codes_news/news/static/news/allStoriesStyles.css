@@ -213,7 +213,7 @@
 
 
 #all-stories .story-card h3, #latest-stories .story-card h3 {
-    height: 100px;
+    height: 10rem;
     max-height: 200px;
     width: 300px;
     margin-bottom: 1px;
@@ -244,22 +244,20 @@
     
 
     #all-stories .story-card h3 {
-        height: 80px;
+        height: 10rem;
         margin-bottom: 1px;
         /* width: 300px; */
       
         
     }
 
-    #story-card h3, h4 {
-        font-size: 16px;
-    }
+   
    
 
    
  
     h3, h4 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 }
 
@@ -267,20 +265,18 @@
 @media  (max-width: 380px)
 {
     #all-stories .story-card h3 {
-        height: 80px;
+        height: 10rem;
         margin-bottom: 1px;
         /* width: 300px; */
         
     }
 
-    #story-card h3, h4 {
-        font-size: 16px;
-    }
+
    
 
    
  
     h3, h4 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 }

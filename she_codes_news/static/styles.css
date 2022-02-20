@@ -350,15 +350,15 @@ a, p {
        font-size: 2rem ;
    }
    h3, h4 {
-       font-size: .8rem;
+       font-size: 2rem;
    }
 
    #story-card h3, h4 {
-       font-size: 12.5px;
+      font-size: 2rem;
    }
 
    a {
-       font-size: .9rem;
+      font-size: 1rem;
    }
       
         
@@ -370,11 +370,11 @@ a, p {
 @media  (max-width: 380px)
 {
     h3, h4 {
-        font-size: .8rem;
+        font-size: 2rem;
     }
       
     a {
-        font-size: .9rem;
+        font-size: 1rem;
     }   
 }
 
