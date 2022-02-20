@@ -132,11 +132,11 @@ class StorySearchView(generic.ListView):
         if(current_sort == 'asc'):
             q = self.request.GET.copy()
             q['sort'] = 'desc'
-            sort = (q.urlencode(),'Newest')
+            sort = (q.urlencode(),'Oldest')
         else:
             q = self.request.GET.copy()
             q['sort'] = 'asc'
-            sort = (q.urlencode(),'Oldest')
+            sort = (q.urlencode(),'Newest')
 
         category = []
 
