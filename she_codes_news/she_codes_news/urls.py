@@ -24,4 +24,9 @@ urlpatterns = [
     path('users/', include('users.urls')),
 ]
 
-
+handler404 = 'news.views.error_404'
+# handler404 = ''.views.error_404'
+handler400 = 'news.views.error_400'
+# error_403 = 'news.views.error_403'
+handler403 = 'news.views.error_403'
+# handler500 = 'news.views.error_500'

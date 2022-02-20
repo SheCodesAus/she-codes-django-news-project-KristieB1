@@ -2,7 +2,7 @@ from turtle import title
 from unicodedata import category
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Category, NewsStory
 from .forms import StoryForm
 from django.http import HttpResponse
@@ -94,23 +94,12 @@ class AddStoryView(SuccessMessageMixin, generic.CreateView):
     #         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     def form_valid(self, form):
         form.instance.author = self.request.user
-        success_message = self.get_success_message(form.cleaned_data)
-        if success_message:
-            messages.success(self.request, success_message)
+        # success_message = self.get_success_message(form.cleaned_data)
+        # if success_message:
+        #     messages.success(self.request, success_message)
         return super().form_valid(form)
 
 class EditStoryView(SuccessMessageMixin, generic.UpdateView):
-    # form_class = StoryForm
-    # context_object_name = 'storyForm'
-    # template_name = 'news/createStory.html'
-    # success_url = reverse_lazy('news:index')
-    # success_message = 'Your story has been published'
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     success_message = self.get_success_message(form.cleaned_data)
-    #     if success_message:
-    #         messages.success(self.request, success_message)
-    #     return super().form_valid(form)
     model = NewsStory
     fields = (
         'title',
@@ -121,6 +110,7 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
     )
     template_name = 'news/editStory.html'
     success_url= reverse_lazy('news:index')
+    success_message = 'Your story has been updated'
     
     def has_permission(self, request):
         return request.user.is_active and request.user.is_author
@@ -145,6 +135,13 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
         kwargs = {
             'initial': self.module.settings
         }
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        # success_message = self.get_success_message(form.cleaned_data)
+        # if success_message:
+        #     messages.success(self.request, success_message)
+        return super().form_valid(form)
 
 
 
@@ -215,14 +212,25 @@ class StorySearchView(generic.ListView):
 #         return render(request,'404.html')
 
 def error_404(request, exception):
-        data = {}
-        return render(request,'news/404.html', data)
+        data = { 'home':reverse('news:index')}
+        response = render(request,'news/404.html', data)
+        response.status_code =404
+        return response
 def error_400(request, exception):
-        data = {}
-        return render(request,'news/404.html', data)
+        data = { 'home':reverse('news:index')}
+        response = render(request,'news/400.html', data)
+        response.status_code =400
+        return response
 def error_500(request, exception):
-        data = {}
-        return render(request,'news/404.html', data)
+        data = { 'home':reverse('news:index')}
+        response = render(request,'news/500.html', data)
+        response.status_code =500
+        return response
+def error_403(request, exception):
+        data = { 'home':reverse('news:index')}
+        response = render(request,'news/403.html', data)
+        response.status_code =403
+        return response
 
 # def error_500(request, exception):
 #     data= {}

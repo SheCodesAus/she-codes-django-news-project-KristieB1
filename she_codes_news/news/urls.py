@@ -13,8 +13,3 @@ urlpatterns = [
     # interger, primary key
 ]
 
-error_404 = 'news.views.error_404'
-# handler404 = ''.views.error_404'
-error_500 = 'news.views.error_500'
-# error_403 = 'news.views.error_403'
-error_400 = 'news.views.error_400'

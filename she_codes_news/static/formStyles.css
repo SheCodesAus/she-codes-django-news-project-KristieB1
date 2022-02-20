@@ -269,10 +269,6 @@ button {
 
 
 
-/* #sucess-msg {
-    background-color: green;
-
-} */
 
 /* .story-card{
     backdrop-filter: blur(16px) saturate(180%);
@@ -307,7 +303,7 @@ button {
   
   /* The dropdown container */
   .dropdown {
-    float: left;
+    float: right;
     overflow: hidden;
   }
   
@@ -322,7 +318,7 @@ button {
     padding-right: 10px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
+    /* margin: 0; Important for vertical align on mobile phones */
   }
   
   /* Add a red background color to navbar links on hover */
@@ -332,6 +328,7 @@ button {
 
   .dropdown {
     margin-right: 20px;
+    width: fit-content;
   }
   
   /* Dropdown content (hidden by default) */
@@ -342,6 +339,7 @@ button {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin-right: 2px;
   }
   
   /* Links inside the dropdown */
@@ -351,7 +349,8 @@ button {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    text-align: left;
+    text-align:left;
+    margin-right: 2px;
   }
   
   /* Add a grey background color to dropdown links on hover */

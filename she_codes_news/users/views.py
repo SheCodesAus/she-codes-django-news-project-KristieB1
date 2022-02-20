@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from .forms import ProfileForm, form_validation_error
 from .models import Profile
+from django.core.exceptions import PermissionDenied
 
 # UserCreationForm
 
@@ -41,8 +42,16 @@ class UserEdit(generic.UpdateView):
     def  get_object(self, queryset=None):
       
         return self.request.user
+
+
+    def get(self, request, *args, **kwargs):
+        if(request.user.id ==None):
+            raise PermissionDenied
+        return super().get(self, request, *args, **kwargs)
+    
     # def form_valid(self, form):
     #     r=super().form_valid(form)
+
 
 
     

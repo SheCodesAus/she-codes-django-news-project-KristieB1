@@ -9,11 +9,11 @@
     {% if messages %}
     {% for message in messages %}
     <div class="text-center alert alert-{{ message.tags }}" id="sucess-msg">
-        {{ message|safe }}
-    
+    {{ message|safe }}
+    </div>
     {% endfor %}
     {% endif %}
-    </div>
+    
 
     <div>
     {% if request.user.is_authenticated %}

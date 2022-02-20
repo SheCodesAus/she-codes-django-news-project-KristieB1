@@ -11,10 +11,6 @@
     <h2>Edit your details {{user.username}}</h2>
 </div>
 
-    {% if form.errors %}
-    <p>error</p>
-    {% endif %}
-
     <form id="SignUpDiv" method="post">
     <div class="form-item">
     {% csrf_token %}

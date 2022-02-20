@@ -1,5 +1,4 @@
 {% load static %} 
-
 <!doctype html>
 
 <html lang="en">
@@ -10,18 +9,24 @@
         <meta name="author" content="Kristie Brandis">
         <link rel="stylesheet"  href="{% static 'news/errorStyles.css' %}">
         {% block stylesheets %}{% endblock %}
+       
     </head>
 
     {% block content %}
 
     <body>
         <header>
-            <h1>This is not the page you are looking for</h1>
+            <h1>Uh Oh! Theres been an error</h1>
         </header>
 
-        <h2>Sorry but the page you have navigated to doesnt exist</h2>
-        <h2>Heres a cute Giraffe instead</h2>
-        <img src="https://images.unsplash.com/photo-1626548307930-deac221f87d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y3V0ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"></img>
+        <h2>Sorry somethings gone awry</h2>
+
+        <h2>How about a cute Puppy?</h2>
+        <img src="https://images.unsplash.com/photo-1529906920574-628dc1e49f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"></img>
+        
+        
+
+
         <h2>Return Home?</h2>
 
         <a href="{{ home }}">
