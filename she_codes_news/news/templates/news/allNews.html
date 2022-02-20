@@ -1,7 +1,7 @@
 {% extends "base.html" %}  
 {% load static %} 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/allStoriesStyles.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,23 +23,24 @@
         <button> Please Login to create a Story</button>
     </a>
     {% endif %}
-   
+
+
+   <div class="homepageH2">
    <h2>All News</h2>
+   </div>
 
-   <div>
-    <h4>Sort by:</h4>
+   <div class="sortStories">
+    <h2>Sort stories by:</h2>
  
-    <ul>
     
-        <li><a href="{% url 'news:allNews' %}?sort=fish">Newest</a></li>
     
-    </ul>
+    <a href="{% url 'news:allNews' %}?sort=fish">
+        <button>Newest</button>
+    </a>
     
-    <ul>
-    
-        <li><a href="{% url 'news:allNews' %}?sort=dog">Oldest</a></li>
-
-    </ul>
+    <a href="{% url 'news:allNews' %}?sort=dog">
+        <button>Oldest</button>
+    </a>
     </div>
 
     <div id="all-stories">

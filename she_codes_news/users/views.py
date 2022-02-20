@@ -27,7 +27,7 @@ from .models import Profile
 class RegisterView(generic.CreateView):
     form_class = CustomSignUpForm
     # context_object_name = 'signup'
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy('news:index')
     template_name = 'users/signup.html'
 
 class UserEdit(generic.UpdateView):

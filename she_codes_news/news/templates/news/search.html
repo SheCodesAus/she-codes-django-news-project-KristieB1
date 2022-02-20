@@ -1,7 +1,7 @@
 {% extends "base.html" %}  
 {% load static %} 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'news/allStoriesStyles.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,10 +17,13 @@
         <button> Please Login to create a Story</button>
     </a>
     {% endif %}
-   
-   <h2>Search News</h2>
 
-   <div >
+
+   <div class="homepageH2">
+   <h2>Search News</h2>
+   </div>
+
+   <div id="all-stories" >
     {% if NewsStory %}
         {% for story in NewsStory %}
             {% include "./storyCard.html" with story=story %}
