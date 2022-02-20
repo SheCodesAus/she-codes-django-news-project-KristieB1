@@ -14,16 +14,7 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
-# class NewsAdmin(admin.ModelAdmin):
-#     list_display = ['title',  'content', 'category']
 
-# admin.site.register(NewsStory, NewsAdmin)
-
-
-# class CategoryAdmin(admin.ModelAdmin):
-#     list_display = ['name']
-
-# admin.site.register(Categories, CategoryAdmin)
 
 
 class ProfileAdmin(admin.ModelAdmin):

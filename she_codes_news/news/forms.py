@@ -8,6 +8,6 @@ class StoryForm(ModelForm):
         fields = '__all__'
         exclude = ['author']
         widgets = {
-            'pub_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M:%S'))}
+            'pub_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'))}
 
 

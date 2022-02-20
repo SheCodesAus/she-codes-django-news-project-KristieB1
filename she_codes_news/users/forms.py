@@ -37,11 +37,7 @@ class CustomUserChangeForm(ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 
-# class CustomUserChangeForm(UserChangeForm):
-#     class Meta:
-#         model = CustomUser
-#         fields = ['first_name', 'last_name', 'email']
-#         # exclude = ['password']
+
 
 
 class ProfileForm(forms.ModelForm):
@@ -49,8 +45,7 @@ class ProfileForm(forms.ModelForm):
     def __init__(self,  *args, **kwargs):
         super(ProfileForm, self ).__init__(*args, **kwargs)
         
-    # last_name = forms.CharField(max_length=255)
-    # email = forms.EmailField()
+
 
     class Meta:
         model = Profile

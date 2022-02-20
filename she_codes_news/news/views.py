@@ -3,7 +3,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
 from .models import Category, NewsStory
 from .forms import StoryForm
-from django.http import HttpResponse
 from django.views.generic.edit import UpdateView
 from django.contrib import messages
 from django.shortcuts import render
@@ -23,10 +22,8 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['latest_stories'] = NewsStory.objects.all().order_by('pub_date')[:4]
         context['category_filter'] = Category.objects.all()
         context['author_filter'] = CustomUser.objects.all()
-        # context['all_stories'] = NewsStory.objects.all()
         return context
 
 class AllView(generic.ListView):
@@ -45,8 +42,7 @@ class AllView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['latest_stories'] = NewsStory.objects.all()[:4]
-        # context['all_stories'] = NewsStory.objects.all()
+
         return context
 
 class StoryView(generic.DetailView):
@@ -54,32 +50,9 @@ class StoryView(generic.DetailView):
     template_name = 'news/story.html'
     context_object_name = 'story'
 
-# class AddStoryView(generic.CreateView):
-#     form_class = StoryForm
-#     context_object_name = 'storyForm'
-#     template_name = 'news/createStory.html'
-#     # success_url = reverse_lazy('news:index')
-#     success_message = 'Your story has been published'
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
 
 
-# stuffing around with success messages 
 
-
-# class SuccessMessageMixin:
-#     success_message = 'Your story has been published'
-
-#     def form_valid(self,form):
-#         response = super().form_valid(form)
-#         success_message = self.get_success_message(form.cleaned_data)
-#         if success_message:
-#             messages.success(self.request, success_message)
-#         return response
-    
-#     def get_success_message(self, cleaned_data):
-#         return self.success_message % cleaned_data
 
 class AddStoryView(SuccessMessageMixin, generic.CreateView):
     form_class = StoryForm
@@ -87,26 +60,16 @@ class AddStoryView(SuccessMessageMixin, generic.CreateView):
     template_name = 'news/createStory.html'
     success_url = reverse_lazy('news:index')
     success_message = 'Your story has been published'
-    # def my_view(request):
-    #     if not request.user.is_authenticated:
-    #         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+   
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # success_message = self.get_success_message(form.cleaned_data)
-        # if success_message:
-        #     messages.success(self.request, success_message)
+        
         return super().form_valid(form)
 
 class EditStoryView(SuccessMessageMixin, generic.UpdateView):
     model = NewsStory
     form_class = StoryForm
-    # fields = (
-    #     'title',
-    #     'category',
-    #     'pub_date',
-    #     'image_url',
-    #     'content'
-    # )
+   
     template_name = 'news/editStory.html'
     success_url= reverse_lazy('news:index')
     success_message = 'Your story has been updated'
@@ -114,11 +77,7 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
     def has_permission(self, request):
         return request.user.is_active and request.user.is_author
 
-    # def get_success_url(self):
-    #     if self.object.app_label:
-    #         return reverse('admin:app_list', kwargs={'app_label': self.object.app_label})
-    #     else:
-    #         return reverse('admin:index')
+
 
     def get_module(self):
         object = self.object if getattr(self, 'object', None) is not None else self.get_object()
@@ -137,9 +96,6 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # success_message = self.get_success_message(form.cleaned_data)
-        # if success_message:
-        #     messages.success(self.request, success_message)
         return super().form_valid(form)
 
 
@@ -147,13 +103,11 @@ class EditStoryView(SuccessMessageMixin, generic.UpdateView):
 class StorySearchView(generic.ListView):
     template_name = 'news/search.html'
     context_object_name = 'NewsStory'
-    # model = NewsStory
 
     def get_queryset(self):
-        # category = self.kwargs.get('category', '')
         category = self.request.GET.get('category')
         author = self.request.GET.get('author')
-        # object_list = self.model.objects.all()
+
         object_list = NewsStory.objects.all()
         if category:
             object_list = object_list.filter(category__name__icontains=category)
@@ -163,52 +117,12 @@ class StorySearchView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['latest_stories'] = NewsStory.objects.all()[:4]
-        # context['object_list'] = NewsStory.objects.all()
         return context
 
 
   
 
-    # def get_queryset(self):
-    #     '''Return all news stories.'''
-    #     return NewsStory.objects.all()
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['latest_stories'] = NewsStory.objects.filter(title__icontains=)
-    #     # context['all_stories'] = NewsStory.objects.all()
-    #     return context
-
-    #    def get_context_data(self, **kwargs):
-    #     context = super('object_list', self).get_context_data(**kwargs)
-    #     if not self.profiles:
-    #         self.profiles = Profile.objects.all()
-    #     context.update({
-    #         'profiles': self.profiles
-    #     })
-    #     return context
-
-        # NewsStory.objects.filter(category__name__in=["General","Cats"])
-
-
-    # def form_valid(self,form):
-    #     response = super().form_valid(form)
-    #     success_message = self.get_success_message(form.cleaned_data)
-    #     if success_message:
-    #         messages.success(self.request, success_message)
-    #     return response
     
-    # def get_success_message(self, cleaned_data):
-    #     return self.success_message % cleaned_data
-
-# def error_404(request, exception):
-#     data= {}
-#     return render(request, '404.html', data)
-
-# def error_404(request, exception):
-
-#         return render(request,'404.html')
 
 def error_404(request, exception):
         data = { 'home':reverse('news:index')}
@@ -231,15 +145,4 @@ def error_403(request, exception):
         response.status_code =403
         return response
 
-# def error_500(request, exception):
-#     data= {}
-#     return render(request, '500.html', data)
-
-# def error_400(request, exception):
-#     data= {}
-#     return render(request, '400.html', data)
-
-# def error_403(request, exception):
-#     data = {}
-#     return render(request, '403.html', data)
 

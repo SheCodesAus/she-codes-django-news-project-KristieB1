@@ -106,16 +106,10 @@ a {
 }
 
 p {
-    /* font-family: 'Lato'; */
     font-weight: 400;
     font-size: 1.5rem;
 }
 
-/* form{
-    display: flex;
-    border-bottom: 1px solid magenta;
-
-} */
 
 form p label {
     color: black;
@@ -131,10 +125,7 @@ form p input, select, textarea{
     
 }
 
-/* #createStoryForm p textarea {
-    background-color: white;
-    border-radius: 4px;
-} */
+
 
 #createStoryForm {
     display: flex;
@@ -142,9 +133,7 @@ form p input, select, textarea{
     margin: 2px;
     padding:5px;
     width: 50%;
-    /* backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(236, 236, 248, 0.75); */
+
 
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(5px);
@@ -153,14 +142,11 @@ form p input, select, textarea{
 }
 
 form {
-    /* display: flex;
-    align-content: flex-start; */
+
     margin: 2px;
     padding:5px;
     width: 60%;
-    /* backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(236, 236, 248, 0.75); */
+ 
 
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(5px);
@@ -190,9 +176,7 @@ form {
     margin: 2px;
     padding:5px;
     width: 50%;
-    /* backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(236, 236, 248, 0.75); */
+    
 
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(5px);
@@ -268,18 +252,6 @@ button {
   }
 
 
-
-
-/* .story-card{
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: #bcb8ce;
-    border-radius: 12px;
-    border: 2px solid rgba(182, 170, 214, 0.3);
-    border-radius: 2px;
-} */
-   
-  /* Navbar container */
   .navbar {
     overflow: hidden;
     width: fit-content;
@@ -288,7 +260,7 @@ button {
     /* font-family: Arial; */
   }
   
-  /* Links inside the navbar */
+
   .navbar a {
     float: left;
     font-size: 18px;
@@ -301,13 +273,13 @@ button {
   
   }
   
-  /* The dropdown container */
+ 
   .dropdown {
     float: right;
     overflow: hidden;
   }
   
-  /* Dropdown button */
+ 
   .dropdown .dropbtn {
     font-size: 16px;
     border: none;
@@ -317,11 +289,10 @@ button {
     margin-right: 10px;
     padding-right: 10px;
     background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    /* margin: 0; Important for vertical align on mobile phones */
+    font-family: inherit; 
   }
   
-  /* Add a red background color to navbar links on hover */
+  
   .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: inherit;
   }
@@ -331,7 +302,7 @@ button {
     width: fit-content;
   }
   
-  /* Dropdown content (hidden by default) */
+ 
   .dropdown-content {
     display: none;
     position: absolute;
@@ -342,7 +313,7 @@ button {
     margin-right: 2px;
   }
   
-  /* Links inside the dropdown */
+ 
   .dropdown-content a {
     float: none;
     color: inherit;
@@ -353,12 +324,12 @@ button {
     margin-right: 2px;
   }
   
-  /* Add a grey background color to dropdown links on hover */
+ 
   .dropdown-content a:hover {
     background-color: #ddd;
   }
   
-  /* Show the dropdown menu on hover */
+  
   .dropdown:hover .dropdown-content {
     display: block;
   }

@@ -10,6 +10,6 @@ urlpatterns = [
     path('add-story/', views.AddStoryView.as_view(),name='newStory'),
     path('<int:pk>/update', views.EditStoryView.as_view(),name='editStory'),
     path('search/', views.StorySearchView.as_view(),name='search')
-    # interger, primary key
+
 ]
 
