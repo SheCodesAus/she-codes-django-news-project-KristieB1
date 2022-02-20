@@ -7,6 +7,7 @@ class StoryForm(ModelForm):
         model = NewsStory
         fields = '__all__'
         exclude = ['author']
-#       
+        widgets = {
+            'pub_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M:%S'))}
 
 

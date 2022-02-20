@@ -99,13 +99,14 @@ class AddStoryView(SuccessMessageMixin, generic.CreateView):
 
 class EditStoryView(SuccessMessageMixin, generic.UpdateView):
     model = NewsStory
-    fields = (
-        'title',
-        'category',
-        'pub_date',
-        'image_url',
-        'content'
-    )
+    form_class = StoryForm
+    # fields = (
+    #     'title',
+    #     'category',
+    #     'pub_date',
+    #     'image_url',
+    #     'content'
+    # )
     template_name = 'news/editStory.html'
     success_url= reverse_lazy('news:index')
     success_message = 'Your story has been updated'
