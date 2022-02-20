@@ -1,5 +1,3 @@
-from turtle import title
-from unicodedata import category
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
