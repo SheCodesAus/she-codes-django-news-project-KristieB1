@@ -57,6 +57,12 @@ class ProfileEdit(generic.UpdateView):
         profile, created =Profile.objects.get_or_create(user=self.request.user)
         return profile
 
+    def get(self, request, *args, **kwargs):
+        if(request.user.id ==None):
+            raise PermissionDenied
+        return super().get(self, request, *args, **kwargs)
+  
+
 class ProfileView(generic.DetailView):
     form_class = ProfileForm
     template_name = 'users/profile.html'
