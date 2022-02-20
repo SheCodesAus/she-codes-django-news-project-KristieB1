@@ -7,10 +7,17 @@ project link: https://thawing-fortress-65766.herokuapp.com/news/
 superuser:kbrandis / HiThere1
 
 
+note: 
+
+can only delete from admin page
+only story author can edit story from front end 
+
+
+
 Features:
 search page has options to filter and sort together  
 
-Success messages on publish and edit stories
+Success messages on publish and edit stories (fade in)
 
 added default datetime to have a default based on current datetime
 
