@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
@@ -9,6 +10,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
 from users.models import CustomUser
+from django.http import QueryDict
 
 
 
@@ -107,16 +109,53 @@ class StorySearchView(generic.ListView):
     def get_queryset(self):
         category = self.request.GET.get('category')
         author = self.request.GET.get('author')
+        sort = self.request.GET.get('sort')
 
         object_list = NewsStory.objects.all()
         if category:
             object_list = object_list.filter(category__name__icontains=category)
         if author:
             object_list = object_list.filter(author__username__icontains=author)
+
+        if sort=='asc':
+            object_list = object_list.order_by('-pub_date')
+        else:
+            object_list = object_list.order_by('pub_date')
+
         return object_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        current_sort = self.request.GET.get('sort')
+
+        sort = None
+        if(current_sort == 'asc'):
+            q = self.request.GET.copy()
+            q['sort'] = 'desc'
+            sort = (q.urlencode(),'Newest')
+        else:
+            q = self.request.GET.copy()
+            q['sort'] = 'asc'
+            sort = (q.urlencode(),'Oldest')
+
+        category = []
+
+        for C in Category.objects.all():
+            q = self.request.GET.copy()
+            q['category'] = C.name
+            category.append((q.urlencode(),C.name))
+
+        author = []
+
+        for A in CustomUser.objects.all():
+            q = self.request.GET.copy()
+            q['author'] = A.username
+            author.append((q.urlencode(),A.username)) 
+
+        context['category_filter'] = category 
+        context['author_filter'] = author
+        context['sort'] = sort
+
         return context
 
 
