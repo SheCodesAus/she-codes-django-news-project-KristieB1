@@ -8,6 +8,8 @@ body {
     background-color: white ;
     /* background-image: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80); */
     /* border: red; */
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
  
 }
 
@@ -61,7 +63,10 @@ header {
 .homepageFilters div {
     display: flex;
     flex-direction: row;
+    flex-basis: 100%;
+    flex-wrap: wrap;
     gap: 20px 20px;
+    justify-content: center;
 }
 
 
@@ -236,19 +241,21 @@ button {
 .navbar {
     overflow: hidden;
     width: fit-content;
+    height: fit-content;
+    margin-top: 2px;
     background-color: inherit;
     margin-right: 40px;
     /* font-family: Arial; */
   }
   
   /* Links inside the navbar */
-  .navbar a {
+.navbar a {
     float: left;
-    font-size: 16px;
+    font-size: 18px;
     color: white;
     align-content: flex-end;
     text-align: center;
-    padding: 14px 16px;
+    padding: 11px 16px;
     text-decoration: none;
     border-color:  rgba(117, 69, 228, 0.842) ;
   
@@ -334,3 +341,40 @@ a, p {
     /* font-family: 'Lato'; */
     font-weight: 400;
 }
+
+
+@media (max-device-width: 380px)
+ {
+ 
+   h2 {
+       font-size: 2rem ;
+   }
+   h3, h4 {
+       font-size: .8rem;
+   }
+
+   #story-card h3, h4 {
+       font-size: 12.5px;
+   }
+
+   a {
+       font-size: .9rem;
+   }
+      
+        
+    
+   
+}
+
+
+@media  (max-width: 380px)
+{
+    h3, h4 {
+        font-size: .8rem;
+    }
+      
+    a {
+        font-size: .9rem;
+    }   
+}
+

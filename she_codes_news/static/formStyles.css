@@ -295,11 +295,11 @@ button {
   /* Links inside the navbar */
   .navbar a {
     float: left;
-    font-size: 16px;
+    font-size: 18px;
     color: white;
     align-content: flex-end;
     text-align: center;
-    padding: 14px 16px;
+    padding: 11px 16px;
     text-decoration: none;
     border-color:  rgba(117, 69, 228, 0.842) ;
   
