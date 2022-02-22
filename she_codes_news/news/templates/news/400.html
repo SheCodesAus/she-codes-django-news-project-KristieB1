@@ -1,0 +1,35 @@
+{% load static %} 
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>She Codes News</title>
+        <meta name="description" content="">
+        <meta name="author" content="Kristie Brandis">
+        <link rel="stylesheet"  href="{% static 'news/errorStyles.css' %}">
+        {% block stylesheets %}{% endblock %}
+       
+    </head>
+    {% block content %}
+
+    <body>
+        <header>
+            <h1>Bad request</h1>
+        </header>
+
+        <h2>Sorry but your request was not valid</h2>
+        <h2>How about a cute Puppy?</h2>
+        <img src="https://images.unsplash.com/photo-1529906920574-628dc1e49f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"></img>
+        
+        
+        <h2>Return to Home?</h2>
+
+        <a href="{{ home }}">
+            <button> Homepage</button>
+        </a>
+        
+    </body>
+
+    {% endblock %}
+</html>

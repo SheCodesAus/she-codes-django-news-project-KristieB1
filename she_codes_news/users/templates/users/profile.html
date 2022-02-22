@@ -1,0 +1,79 @@
+{% extends "base.html" %}  
+{% load static %} 
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'profileStyles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+{% if request.user.is_authenticated %}
+
+
+    <!-- <div class="profile"> -->
+    <div class="profileH2">
+    <h2>{{user.username}}'s Profile </h2>
+    </div>
+
+    <!-- <div class="profileContent"> -->
+    <div class="myBio">
+        <!-- <h3>{{user.email}} </h3> -->
+        <h3>My info</h4>
+        <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+        <h4>Email: {{ user.email }}</h4>
+        <h4> Bio: {{ profile.bio }}</h4>
+        <h4> Avatar Image: </h4>
+        <img src="{{ profile.avatar_url}}">
+        <a href="{% url 'users:profileEdit' %}">
+            <button>Edit</button>
+        </a>
+
+    </div>
+
+    
+    
+
+    <div class="myInfo">
+        <h3>My Stories</h3>
+
+        <table>
+        <thead>
+            <tr>
+                <th><h4>Title</h4></th>
+                <th><h4>Publish Date</h4></th>
+                <th><h4>Link</h4></th>
+            </tr>
+        </thead>   
+        <tbody> 
+            {{ form.as_table }}
+            {% for story in user.newsstory_set.all %}
+        <tr>
+            <td><p>{{story.title}}</p> </td>
+            <td><p>{{story.pub_date}}</p> </td>
+            <td> <a href="{% url 'news:story' story.id %}">Story Link</a> </td>
+        
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+        <!-- <ul>
+        {% for story in user.newsstory_set.all %}
+            <li><a href="{% url 'news:story' story.id %}">{{story.title}}</a></li>
+        {% endfor %}
+        </ul> -->
+    </div>
+    <!-- </div> -->
+    
+    <!-- </div> -->
+    
+
+{% else %}
+<a href="{% url 'login' %}">Please Login</a>
+{% endif %}
+{% endblock %}
+

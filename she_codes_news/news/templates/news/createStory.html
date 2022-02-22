@@ -1,0 +1,80 @@
+{% extends "formBase.html" %}
+
+{% block content %}
+
+<div class="createStoryDiv">
+
+{% if request.user.is_authenticated %}
+<div>
+    <h2>Create a News Story</h2>
+</div>
+<form id="createStoryForm" action="" method="post">
+    <div class="form-item">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="Submit">Submit</button>
+    <!-- <button class="button" type="submit">Send</button> -->
+    </div>
+</form>
+{% else %}
+
+<a href="{% url 'login' %}">
+    <button> Please Login to create a Story</button>
+</a>
+
+{% endif %}
+
+</div>
+{% endblock %}
+
+
+
+<!-- <div class="story-card-text">
+    <h3>Title: {{ story.title }}</h3>
+    {% if position < 5 %}
+    <img src="../static/news/images/placeholder-{{ position }}.jpg">
+    {% else %}
+    <img src="{{ story.image_url }}">
+    {% endif %}
+    <h4>Author: {{ story.author }}</h4>
+    <h4>Publish date: {{ story.pub_date }}</h4>
+    <h4>Category: {{ story.category }}</h4>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'news:story' story.id %}update">Edit</a>
+    {% else %}
+    {% endif %}
+</div> -->
+
+
+
+    <!-- <div class="form-item">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div> 
+            <div class="form-item">
+                <label for="mail">Email</label>
+                <input type="email" id="mail" name="email">
+            </div>
+            </div>
+            <div class="form-item">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div class="form-item" id="myDIV">
+                <div id="space"></div>
+                <button class="button" type="submit">Send</button>
+            </div> -->
+
+<!-- <nav>
+    <a href="{% url 'news:index' %}">Home</a>
+    {% if request.user.is_authenticated %}
+    <a href="#">{{ user.username }}</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</nav> -->
+
+
+
+

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,800;1,800&family=Source+Sans+3:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Lato:wght@100;900&family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@600&family=Playfair+Display:ital,wght@0,400;0,800;1,800&family=Source+Sans+3:wght@200&display=swap');
+
+
+body {
+    background-color: #7b75a0;
+    font-family: 'Lato', sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    background-color: #b7b4cb ;
+}
+
+img {
+    filter: drop-shadow(1);
+}
+
+h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 4rem;
+    margin: 0;
+    color: #b7b4cb;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+}
+
+h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+#header-text {
+    flex-basis: 80%;
+    display: flex;
+}
+
+nav {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+a {
+    margin: 2px;
+    text-decoration: none;
+    color: #000;
+}
+
+a, p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+
+

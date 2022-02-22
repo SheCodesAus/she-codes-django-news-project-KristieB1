@@ -1,0 +1,124 @@
+.story-card {
+    margin: 2px;
+    /* border: 1px solid whitesmoke; */
+    padding: 5px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: #bcb8ce;
+    border-radius: 12px;
+    border: 2px solid rgba(182, 170, 214, 0.3);
+    border-radius: 2px;
+}
+
+.story-card img {
+    width: 90%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#latest-stories {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-1 right-1" "left-2 right-2" "left-3 right-3";
+    max-height: 300px;
+    max-width: 200px;
+}
+
+#story-card-1 {
+    grid-area: left-1;
+}
+
+#story-card-2 {
+    grid-area: right-1;
+}
+
+#story-card-3 {
+    grid-area: right-2;
+}
+
+#story-card-4 {
+    grid-area: right-3;
+}
+
+/* #story-card-2 a,
+#story-card-3 a,
+#story-card-4 a {
+    display: flex;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+}
+
+#story-card-2 .story-card-text h3,
+#story-card-3 .story-card-text h3,
+#story-card-4 .story-card-text h3 {
+    font-size: 16px;
+}
+
+#story-card-2 .story-card-text h4,
+#story-card-3 .story-card-text h4,
+#story-card-4 .story-card-text h4 {
+    font-size: 12px;
+}
+
+#story-card-2 img,
+#story-card-3 img,
+#story-card-4 img {
+    width: 33%;
+    height: 100%;
+    margin-right: 5px;
+} */
+
+#all-stories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#all-stories .story-card {
+    flex-basis: 32%;
+    flex-grow: 1;
+}
+
+#story-content {
+    text-align: justify;
+}
+
+#story-content img {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 50%;
+}
+
+#sucess-msg {
+    display: inline-flex;
+    width: 220px;
+    border-radius: 12px;
+    border:  2px solid rgba(23, 105, 7, 0.3);
+    font-size: medium;
+    justify-content: center;
+    background-color: rgba(23, 105, 7, 0.3);
+    color: black;
+    transition: opacity 5s;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0; 
+    /* filter: opacity(0.8) */
+    animation: fadeOutAnimation ease 5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: backwards;
+        }
+        @keyframes fadeOutAnimation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: .9;
+            }
+
+}

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 
 <html lang="en">
@@ -5,21 +7,29 @@
         <meta charset="utf-8">
         <title>She Codes News</title>
         <meta name="description" content="">
-        <meta name="author" content="Hayley van Waas">
-        <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="">
+        <meta name="author" content="Kristie Brandis">
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        {% block stylesheets %}{% endblock %}
+
+
+        <!-- @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Lato:wght@100;900&family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@600&family=Playfair+Display:ital,wght@0,400;0,800;1,800&family=Source+Sans+3:wght@200&display=swap'); -->
+
     </head>
 
     <body>
         <header>
             <div id="header-text">
                 <a id="header-link" href="{% url 'news:index' %}">
+                    <a id="header-link" href="{% url 'news:search' %}"></a>
                     <h1>She {Codes} News</h1>
                 </a>
             </div>
             <!-- include nav here -->
+            {% include './nav.html' %}
         </header>
 
         <!-- content blocks here -->
+        {% block content %}{% endblock %}
     </body>
 </html>

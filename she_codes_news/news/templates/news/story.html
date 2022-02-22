@@ -1,8 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
 <div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
+    <h2>Title: {{ story.title }}</h2>
+    <h4>Author: {{ story.author }}</h4>
+    <h4>Category: {{ story.category }}</h4>
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        <img class="storyViewImage" src="{{ story.image_url }}">
         {{ story.content|linebreaks }}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'news:story' story.id %}update">
+            <button>Edit</button>
+        </a>
+        {% else %}
+        {% endif %}
     </div>
 </div>
+
+{% endblock %}

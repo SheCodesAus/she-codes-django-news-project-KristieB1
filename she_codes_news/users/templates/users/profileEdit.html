@@ -1,0 +1,49 @@
+{% extends "formBase.html" %}
+
+{% block title %}Profile Edit{% endblock title %}
+
+
+{% block content %}
+
+    <div class="SignUpDiv">
+
+    {% if request.user.is_authenticated %}
+
+    <div>
+    <h2>{{user.username}}'s' profile </h2>
+    </div>
+
+    <form id="SignUpDiv" action="" method="post">
+    <div class="form-item">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button class="button" type="submit">Update</button>
+    </div>
+    </form>
+
+    <!-- <div> -->
+        <!-- <h3>{{user.email}} </h3> -->
+        <!-- <p> -->
+            <!-- {{bio}} -->
+        <!-- </p> -->
+    <!-- </div> -->
+
+
+    <!-- <div>
+        <ul>
+        {% for story in user.newsstory_set.all %}
+            <li><a href="{% url 'news:story' story.id %}">{{story.title}}</a></li>
+        {% endfor %}
+        </ul>
+    </div> -->
+
+   
+
+    {% else %}
+
+    <a href="{% url 'login' %}">Please Login to Edit your Profile</a>
+    {% endif %}
+     
+
+    {% endblock %}
+
